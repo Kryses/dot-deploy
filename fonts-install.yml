@@ -1,0 +1,24 @@
+# fonts-install.yml
+---
+- name: Check if Nerd Fonts are installed
+  stat:
+    path: ~/.local/share/fonts/NerdFonts
+  register: font_file_stat
+  become: false
+- name: Check if Nerd repo exists. 
+  stat:
+    path: "{{ temp_dir.path }}/nerd-fonts"
+  register: nerd_repo_stat
+  become: false
+- name: Download Fonts
+  git:
+    repo: "https://github.com/ryanoasis/nerd-fonts.git"
+    dest: "{{ temp_dir.path }}/nerd-fonts"
+    version: "master"
+    depth: 1
+  when: (font_file_stat.stat.exists == False) and (nerd_repo_stat.stat.exists == False)
+- name: Run install.sh
+  shell: "{{ temp_dir.path }}/nerd-fonts/install.sh"
+  when: font_file_stat.stat.exists == False
+- name: Update Fonts Cache
+  shell: "fc-cache -f -v"

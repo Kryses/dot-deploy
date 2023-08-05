@@ -1,0 +1,18 @@
+# build-zsh.yml
+
+---
+- name: Check if Powerlevel10k is installed
+  stat:
+    path: "{{ powerlevel10k_path }}"
+  register: powerlevel_folder
+- name: Download PowerLevel10k
+  git:
+    repo: git@github.com:romkatv/powerlevel10k.git
+    dest: "{{ powerlevel10k_path }}"
+    depth: 1
+  when: powerlevel_folder.stat.exists == False
+- name: Set ZSH Config
+  template:
+    src: ./configs/zshrc.j2
+    dest: "~/.zshrc" 
+  

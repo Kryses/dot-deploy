@@ -1,0 +1,14 @@
+# windows-install-terminal.yml
+---
+- name: Check if Windows terminal is installed.
+  win_shell: Get-Command wt.exe -ErrorAction SilentlyContinue
+  register: window_terminal_check
+  changed_when: false
+- name: Install Windows Terminal
+  win_shell: |
+    if ($null -eq (Get-Command wt.exe -ErrorAction SilentlyContinue)) {
+      iex "& { $(irm https://aka.ms/install-powershell.ps1) }"
+      Install-Module -Name Microsoft.PowerShellGet -Force -AllowClobber
+      Install-WindowTerminal
+      }
+  when: windows_terminal_check.rc != 0

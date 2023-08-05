@@ -1,0 +1,37 @@
+# Main Playbook
+
+---
+- name: Main Playbook
+  hosts: localhost
+  become: false 
+  gather_facts: yes
+  vars:
+    powerlevel10k_path: "~/.powerlevel10k"
+  tasks:
+        
+    - name: Apt installs
+      become: true
+      include: apt-installs.yml
+
+    - name: Create temp directory.
+      tempfile:
+        state: directory
+      register: temp_dir
+
+    - name: Install Fonts
+      become: false
+      include: fonts-install.yml
+
+    - name: Build zsh
+      become: false
+      include: build-zsh.yml
+
+
+  post_tasks:
+    - name: Delete Temp Dir
+      file: 
+        path: "{{ temp_dir.path }}"
+        state: absent
+      when: temp_dir.path is defined and temp_dir.path | length > 0
+
+

@@ -1,0 +1,32 @@
+# apt_installs.yml
+
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
+
+- name: Install required packages
+  apt:
+    name:
+      - build-essential 
+      - libarchive-tools 
+      - wget
+      - snap
+      - make
+      - unzip
+      - fontconfig
+      - pkg-config
+      - libreadline-dev
+      - libpthread-stubs0-dev
+      - cmake
+      - libtool
+      - libtool-bin
+      - gettext
+      - ninja-build
+      - curl
+      - htop
+      - ncdu
+      - tmux
+      - zsh
+    state: present
