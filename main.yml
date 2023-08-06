@@ -37,6 +37,8 @@
       become: False
       include: build-neovim.yml
 
+    - name: Configure Vim
+      include: configure-neovim.yml
 
   post_tasks:
     - name: Delete Temp Dir
