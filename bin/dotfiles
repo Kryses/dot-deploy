@@ -3,6 +3,9 @@ set -e
 
 DOTFILES_DIR="$HOME/.dotfiles"
 SSH_DIR="$HOME/.ssh"
+echo $DOTFILES_DIR
+echo $SSH_DIR
+
 if ! [ -x "$(command -v ansible)" ]; then
 	sudo apt install -y  ansible
 fi

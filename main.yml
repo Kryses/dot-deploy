@@ -18,17 +18,29 @@
         state: directory
       register: temp_dir
 
+    - name: Create User Bin Dir
+      file:
+        path: ~/bin
+        state: directory
+      register: user_bin_folder
+      
+
     - name: Install Fonts
       become: false
       include: fonts-install.yml
 
-    - name: Build zsh
+    - name: Install ZSH 
       become: false
-      include: build-zsh.yml
+      include: install-zsh.yml
+
+    - name: Build Neovim
+      become: False
+      include: build-neovim.yml
 
 
   post_tasks:
     - name: Delete Temp Dir
+      become: true
       file: 
         path: "{{ temp_dir.path }}"
         state: absent
