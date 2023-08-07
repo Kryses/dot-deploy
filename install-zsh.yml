@@ -13,6 +13,6 @@
   when: powerlevel_folder.stat.exists == False
 - name: Set ZSH Config
   template:
-    src: ./configs/zshrc.j2
+    src: templates/zshrc.j2
     dest: "~/.zshrc" 
   

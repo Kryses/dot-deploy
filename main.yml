@@ -13,6 +13,18 @@
       become: true
       include: apt-installs.yml
 
+    - name: Set git User Email
+      git_config:
+        name: "user.email"
+        value: "thechad802@gmail.com"
+        scope: "global"
+
+    - name: Set git User Name
+      git_config:
+        name: "user.name"
+        value: "Chad Provencher"
+        scope: "global"
+
     - name: Create temp directory.
       tempfile:
         state: directory
@@ -39,6 +51,9 @@
 
     - name: Configure Vim
       include: configure-neovim.yml
+
+    - name: Load Configs
+      include: load-configs.yml
 
   post_tasks:
     - name: Delete Temp Dir
