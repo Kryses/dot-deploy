@@ -2,28 +2,28 @@
 ---
 - name: Check NeoVim installed
   become: false
-  command: where nvim
+  command: which nvim
   register: nvim_check
   ignore_errors: yes
 
 - name: Clone Neo Vim
   git:
-    repo: git@github.com:neovim/neovim.git
+    repo: https://github.com/neovim/neovim.git
     version: stable
     dest: "{{ temp_dir.path }}/neovim"
-  when: nvim_check == false
+  when: nvim_check.rc != 0
 
 - name: Build NeoVim
   shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo" 
   become: true
   args:
     chdir: "{{ temp_dir.path }}/neovim"
-  when: nvim_check == false
+  when: nvim_check.rc != 0
 
 - name: Install NeoVim
   become: true
   shell: "make install"
   args:
     chdir: "{{ temp_dir.path }}/neovim"
-  when: nvim_check == false
+  when: nvim_check.rc != 0
 

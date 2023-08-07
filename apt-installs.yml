@@ -29,6 +29,5 @@
       - ncdu
       - tmux
       - zsh
-      - python
       - cargo
     state: present

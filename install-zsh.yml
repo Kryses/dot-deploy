@@ -7,7 +7,7 @@
   register: powerlevel_folder
 - name: Download PowerLevel10k
   git:
-    repo: git@github.com:romkatv/powerlevel10k.git
+    repo: https://github.com/romkatv/powerlevel10k.git
     dest: "{{ powerlevel10k_path }}"
     depth: 1
   when: powerlevel_folder.stat.exists == False
