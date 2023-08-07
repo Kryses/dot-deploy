@@ -1,0 +1,23 @@
+---
+- name: Check Tmux Plugin Folder
+  stat:
+    path: ~/.tmux/plugins/tpm
+  register: tmux_plugins_dir
+  
+- name: Install Tmux Plugin Manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+  when: tmux_plugins_dir.stat.exists == false
+  
+- name: Check if .tmux.confg exists
+  stat:
+    path: ~/.tmux.conf
+  register: tmux_conf_stat
+
+- name: Create Symbolic link for tmux.conf
+  file:
+    src: ~/.config/tmux/.tmux.conf
+    dest: ~/.tmux.conf
+    state: link
+  when: tmux_conf_stat.stat.exists == false

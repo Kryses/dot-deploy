@@ -1,7 +1,26 @@
 # load-configs.yml
 
 ---
-- name: Copy Configs
-  copy:
-    src: ./.config
-    dest: ~/
+- name: Check if .configs exists
+  stat:
+    path: ~/.config
+  register: conf_stat
+  become: false
+
+- name: Remove .configs
+  file:
+    path: ~/.config
+    state: absent
+  when: conf_stat.stat.exists == false
+    
+- name: Link Configs 
+  file:
+    src: ~/.dotfiles/.config
+    dest: ~/.config
+    state: link
+
+- name: Set bashrc Config
+  template:
+    src: templates/bashrc.j2
+    dest: "~/.bashrc" 
+

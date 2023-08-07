@@ -27,7 +27,10 @@
       - curl
       - htop
       - ncdu
-      - tmux
       - zsh
       - cargo
+      - automake
+      - autoconf
+      - libevent-dev
+      - bison
     state: present

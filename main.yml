@@ -25,6 +25,9 @@
         value: "Chad Provencher"
         scope: "global"
 
+    - name: Load Configs
+      include: load-configs.yml
+
     - name: Create temp directory.
       tempfile:
         state: directory
@@ -35,7 +38,6 @@
         path: ~/bin
         state: directory
       register: user_bin_folder
-      
 
     - name: Install Fonts
       become: false
@@ -45,6 +47,12 @@
       become: false
       include: install-zsh.yml
 
+    - name: Build TMUX
+      include: build-tmux.yml
+
+    - name: Setup TMUX
+      include: configure-tmux.yml
+
     - name: Build Neovim
       become: False
       include: build-neovim.yml
@@ -52,8 +60,6 @@
     - name: Configure Vim
       include: configure-neovim.yml
 
-    - name: Load Configs
-      include: load-configs.yml
 
   post_tasks:
     - name: Delete Temp Dir
