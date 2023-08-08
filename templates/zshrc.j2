@@ -16,3 +16,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 alias df=~/.dotfiles/bin/dotfiles
 alias rz="source ~/.zshrc"
 alias vim=~/.local/bin/lvim
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm

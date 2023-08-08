@@ -1,0 +1,20 @@
+---
+- name: Check nvm installed
+  become: false
+  command: which nvim
+  register: nvm_check
+  ignore_errors: yes
+
+- name: Check node installed
+  become: false
+  command: which npm
+  register: npm_check
+  ignore_errors: yes
+
+- name: Install nvm
+  shell: "wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash" 
+  when: nvm_check.rc != 0
+
+- name: Install node
+  shell: "nvm install node"
+  when: nvm_check.rc != 0

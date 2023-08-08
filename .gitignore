@@ -1,1 +1,3 @@
 *.swp
+.config/github-copilot/
+.config/nvm/

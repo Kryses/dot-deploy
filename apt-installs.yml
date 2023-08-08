@@ -33,4 +33,7 @@
       - autoconf
       - libevent-dev
       - bison
+      - python3.10-venv
+      - nodejs
+      - libscret-tools
     state: present
