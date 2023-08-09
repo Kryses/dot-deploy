@@ -1,6 +1,10 @@
 # build-zsh.yml
 
 ---
+- name: Check if .zshrc exists
+  stat:
+    path: ~/.zshrc
+  register: zsh_conf_stat
 - name: Check if Powerlevel10k is installed
   stat:
     path: "{{ powerlevel10k_path }}"
@@ -11,8 +15,9 @@
     dest: "{{ powerlevel10k_path }}"
     depth: 1
   when: powerlevel_folder.stat.exists == False
-- name: Set ZSH Config
-  template:
-    src: templates/zshrc.j2
-    dest: "~/.zshrc" 
-  
+- name: Create Symbolic link for zsh conf
+  file:
+    src: ~/.config/zsh/.zshrc
+    dest: ~/.zshrc
+    state: link
+  when: zsh_conf_stat.stat.exists == false

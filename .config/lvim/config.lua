@@ -9,8 +9,6 @@ formatters.setup { { name = "black" } }
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup { { command = "flake8", args = {"--ignore=E203"}, filetypes={"python"} }, }
 
-
-
 lvim.plugins = {
   {"christoomey/vim-tmux-navigator"},
   {"AckslD/swenv.nvim"},
@@ -27,6 +25,7 @@ lvim.plugins = {
       require("copilot_cmp").setup()
     end,
   },
+  { "ldelossa/nvim-dap-projects" }
 
 }
 lvim.debug = true
