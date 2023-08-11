@@ -25,6 +25,12 @@
         value: "Chad Provencher"
         scope: "global"
 
+    - name: Set git credential helper
+      git_config:
+        name: "crendential.helper"
+        value: "/usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret"
+        scope: "global"
+
     - name: Load Configs
       include: load-configs.yml
 
@@ -44,6 +50,9 @@
         path: ~/.local/build
         state: directory
       register: user_build_folder
+      
+    - name: Install Node
+      include: install-node.yml
 
     - name: Install Fonts
       become: false
