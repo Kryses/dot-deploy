@@ -10,20 +10,20 @@
   git:
     repo: https://github.com/neovim/neovim.git
     version: stable
-    dest: "{{ temp_dir.path }}/neovim"
+    dest: "{{ user_build_dir.path }}/neovim"
   when: nvim_check.rc != 0
 
 - name: Build NeoVim
-  shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo" 
-  become: true
+  shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX={{ user_bin_dir.path }}" 
+  become: false
   args:
-    chdir: "{{ temp_dir.path }}/neovim"
+    chdir: "{{ user_build_dir.path }}/neovim"
   when: nvim_check.rc != 0
 
 - name: Install NeoVim
-  become: true
+  become: false
   shell: "make install"
   args:
-    chdir: "{{ temp_dir.path }}/neovim"
+    chdir: "{{ user_build_dir.path }}/neovim"
   when: nvim_check.rc != 0
 

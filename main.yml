@@ -35,9 +35,15 @@
 
     - name: Create User Bin Dir
       file:
-        path: ~/bin
+        path: ~/.local/bin
         state: directory
       register: user_bin_folder
+
+    - name: Create User Build Dir
+      file:
+        path: ~/.local/build
+        state: directory
+      register: user_build_folder
 
     - name: Install Fonts
       become: false
@@ -56,10 +62,6 @@
     - name: Build Neovim
       become: False
       include: build-neovim.yml
-
-    - name: Configure Vim
-      include: configure-neovim.yml
-
 
   post_tasks:
     - name: Delete Temp Dir
