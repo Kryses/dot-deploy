@@ -1,0 +1,120 @@
+let mapleader = " "
+
+set NERDTree
+set which-key
+set scrolloff=10
+set noerrorbells
+set showmode
+set showcmd
+set visualbell
+set clipboard+=unnamed
+set relativenumber
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set nerdTree
+set nu
+
+set timeoutlen=5000
+
+let g:WhichKeyDesc_leader                    = "<leader>  Leader"
+let g:WhichKeyDesc_saveAll                   = "<leader>s  SaveAll"
+map <leader>s <Action>(SaveAll)
+
+map gl $
+map gh ^
+
+let g:WhichKeyDesc_explorer                  = "<leader>e  FileBrowser"
+map <leader>e :NERDTree<CR>
+
+let g:WhichKeyDesc_closeTab                  = "<leader>q  CloseTab"
+map <leader>q <Action>(CloseContent)
+
+let g:WhichKeyDesc_hideWindows               = "<leader><leader>  HideWindows"
+map <leader><leader> <Action>(HideAllWindows)
+
+let g:WhichKeyDesc_comment                   = "<leader>/  CommentLine"
+map <leader>/ <Action>(CommentByLineComment)
+
+" Load
+let g:WhichKeyDesc_load                      = "<leader>l  Load..."
+let g:WhichKeyDesc_load_reload               = "<leader>lr  ReloadVim"
+map <leader>lr <Action>(IdeaVim.ReloadVimRc.reload)
+
+" Windows
+let g:WhichKeyDesc_windows                   = "<leader>w  Windows..."
+let g:WhichKeyDesc_windows_splitHorizontally = "<leader>wh  SplitHorizontally"
+map <leader>wh <Action>(SplitHorizontally)
+let g:WhichKeyDesc_windows_splitVertically   = "<leader>wv  SplitVertically"
+map <leader>wv <Action>(SplitVertically)
+let g:WhichKeyDesc_windows_settings          = "<leader>ws  Settings"
+map <leader>ws <Action>(ShowSettings)
+
+" Find
+let g:WhichKeyDesc_find                      = "<leader>f  Find..."
+let g:WhichKeyDesc_find_everywhere           = "<leader>fe Everywhere"
+map <leader>fe <Action>(SearchEverywhere)
+let g:WhichKeyDesc_find_actions              = "<leader>fa Actions"
+map <leader>fa <Action>(GotoAction)
+let g:WhichKeyDesc_find_file                 = "<leader>ff File"
+map <leader>ff <Action>(GotoFile)
+let g:WhichKeyDesc_find_class                = "<leader>fc Class"
+map <leader>fc <Action>(GotoClass)
+let g:WhichKeyDesc_find_symbol               = "<leader>fs Symbol"
+map <leader>fs <Action>(GotoSymbol)
+let g:WhichKeyDesc_find_declaration          = "<leader>fd  GotoDeclaration"
+map <leader>fd <Action>(GotoDeclaration)
+map <leader>fu <Action>(FindUsages)
+
+" Code
+let g:WhichKeyDesc_code                      = "<leader>c  Code..."
+let g:WhichKeyDesc_code_liveTemplates        = "<leader>cl LiveTemplates"
+map <leader>cl <Action>(InsertLiveTemplate)
+
+" Info
+let g:WhichKeyDesc_info                      = "<leader>i  Info..."
+let g:WhichKeyDesc_quick                     = "<leader>iq  Quick..."
+let g:WhichKeyDesc_quick_help                = "<leader>iqh  QuickHelp"
+map <leader>iqh <Action>(QuickJavaDoc)
+
+" Run
+let g:WhichKeyDesc_run                       = "<leader>r  Run..."
+let g:WhichKeyDesc_run_run                   = "<leader>rr  Run"
+map <leader>rr <Action>(Run)
+let g:WhichKeyDesc_run_debug                 = "<leader>rd  Debug"
+map <leader>rd <Action>(Debug)
+let g:WhichKeyDesc_run_config                = "<leader>rc  SelectConfiguration"
+map <leader>rc <Action>(ChooseRunConfiguration)
+let g:WhichKeyDesc_run_configurations        = "<leader>rC  EditConfigurations"
+map <leader>rC <Action>(editRunConfigurations)
+let g:WhichKeyDesc_run_new                   = "<leader>rn  RunNew"
+map <leader>rn <Action>(RunClass)
+let g:WhichKeyDesc_run_breakpoints           = "<leader>rb  Breakpoints..."
+let g:WhichKeyDesc_run_breakpoints_new       = "<leader>rbn  ToggleLineBreakpoint"
+map <leader>rbn <Action>(ToggleLinekreakpoint)
+let g:WhichKeyDesc_run_breakpoints_clear     = "<leader>rbc  ClearBreakpoints"
+map <leader>rbc <Action>(RemoveAllBreakpoints)
+let g:WhichKeyDesc_run_stop                  = "<leader>rs  StopProcess"
+map <leader>rs <Action>(Stop)
+
+
+" Control + hjkl to switch between windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Map forward and back
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
+
+" Debugging
+nmap <S-j> :action StepOver<CR>
+nmap <S-k> :action Resume<CR>
+nmap <S-h> :action StepOut<CR>
+nmap <S-l> :action StepInto<CR>
+
+" Switch tabs
+nmap <A-l> <Action>(NextTab)
+nmap <A-h> <Action>(PreviousTab)
