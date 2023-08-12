@@ -50,6 +50,8 @@ let g:WhichKeyDesc_windows_splitVertically   = "<leader>wv  SplitVertically"
 map <leader>wv <Action>(SplitVertically)
 let g:WhichKeyDesc_windows_settings          = "<leader>ws  Settings"
 map <leader>ws <Action>(ShowSettings)
+let g:WhichKeyDesc_window_evaluate                     = "<leader>we  Evaluate"
+map <leader>we <Action>(EvaluateExpression)
 
 " Find
 let g:WhichKeyDesc_find                      = "<leader>f  Find..."
@@ -71,10 +73,14 @@ map <leader>fu <Action>(FindUsages)
 let g:WhichKeyDesc_code                      = "<leader>c  Code..."
 let g:WhichKeyDesc_code_liveTemplates        = "<leader>cl LiveTemplates"
 map <leader>cl <Action>(InsertLiveTemplate)
+let g:WhichKeyDesc_code_reformat                     = "<leader>cr  ReformatCode"
+map <leader>cr <Action>(ReformatCode)
 
 " Info
 let g:WhichKeyDesc_info                      = "<leader>i  Info..."
 let g:WhichKeyDesc_quick                     = "<leader>iq  Quick..."
+let g:WhichKeyDesc_info_quick                     = "<leader>iqe  QuickEvaluate"
+map <leader>iqe <Action>(QuickEvaluateExpression)
 let g:WhichKeyDesc_quick_help                = "<leader>iqh  QuickHelp"
 map <leader>iqh <Action>(QuickJavaDoc)
 
@@ -92,9 +98,9 @@ let g:WhichKeyDesc_run_new                   = "<leader>rn  RunNew"
 map <leader>rn <Action>(RunClass)
 let g:WhichKeyDesc_run_breakpoints           = "<leader>rb  Breakpoints..."
 let g:WhichKeyDesc_run_breakpoints_new       = "<leader>rbn  ToggleLineBreakpoint"
-map <leader>rbn <Action>(ToggleLinekreakpoint)
+map <leader>rbn <Action>(ToggleLineBreakpoint)
 let g:WhichKeyDesc_run_breakpoints_clear     = "<leader>rbc  ClearBreakpoints"
-map <leader>rbc <Action>(RemoveAllBreakpoints)
+map <leader>rbc <Action>(Debugger.RemoveAllBreakpoints)
 let g:WhichKeyDesc_run_stop                  = "<leader>rs  StopProcess"
 map <leader>rs <Action>(Stop)
 
