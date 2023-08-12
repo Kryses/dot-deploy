@@ -1,7 +1,7 @@
 ---
 - name: Check nvm installed
   become: false
-  command: which nvim
+  command: which nvm
   register: nvm_check
   ignore_errors: yes
 

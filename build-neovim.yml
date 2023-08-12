@@ -6,24 +6,29 @@
   register: nvim_check
   ignore_errors: yes
 
+- name: Check NeoVim Is Cloned
+  stat:
+    path: "{{ user_build_folder.path }}/neovim"
+  register: nvim_repo_stat
+
 - name: Clone Neo Vim
   git:
     repo: https://github.com/neovim/neovim.git
     version: stable
-    dest: "{{ user_build_dir.path }}/neovim"
-  when: nvim_check.rc != 0
+    dest: "{{ user_build_folder.path }}/neovim"
+  when: (nvim_check.rc != 0) and (nvim_repo_stat.stat.exists == false)
 
 - name: Build NeoVim
-  shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX={{ user_bin_dir.path }}" 
+  shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX={{ user_local_folder.path }}" 
   become: false
   args:
-    chdir: "{{ user_build_dir.path }}/neovim"
+    chdir: "{{ user_build_folder.path }}/neovim"
   when: nvim_check.rc != 0
 
 - name: Install NeoVim
   become: false
   shell: "make install"
   args:
-    chdir: "{{ user_build_dir.path }}/neovim"
+    chdir: "{{ user_build_folder.path }}/neovim"
   when: nvim_check.rc != 0
 

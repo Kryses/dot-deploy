@@ -35,5 +35,5 @@
       - bison
       - python3.10-venv
       - nodejs
-      - libscret-tools
+      - libsecret-tools
     state: present

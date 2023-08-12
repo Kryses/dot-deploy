@@ -21,5 +21,5 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 alias df=~/.dotfiles/bin/dotfiles
 alias rz="source ~/.zshrc"
-alias vim=~/.local/bin/lvim
+#alias vim=~/.local/bin/lvim
 

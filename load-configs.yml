@@ -20,7 +20,7 @@
     state: link
 
 - name: Set bashrc Config
-  template:
-    src: templates/bashrc.j2
-    dest: "~/.bashrc" 
-
+  file:
+    src: ~/.dotfiles/.config/.bashrc
+    dest: ~/.bashrc
+    state: link
