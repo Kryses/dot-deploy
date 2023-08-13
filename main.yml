@@ -55,7 +55,7 @@
       become: false
       include: install-zsh.yml
       
-    - name: Install Node
+    - name: Install Nodes
       include: install-node.yml
 
     - name: Install Fonts
@@ -71,6 +71,10 @@
     - name: Build Neovim
       become: False
       include: build-neovim.yml
+
+    - name: Build NNN
+      become: false
+      include: install-nnn.yml
 
   post_tasks:
     - name: Delete Temp Dir

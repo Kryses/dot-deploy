@@ -34,5 +34,6 @@
       - libevent-dev
       - bison
       - libsecret-tools
-      - python3.8-venv
+      - libncurses5-dev
+      - libreadline-dev
     state: present

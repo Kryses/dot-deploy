@@ -1,2 +1,31 @@
 # nnn-install.yml
 ---
+- name: Check NeoVim installed
+  become: false
+  command: which nnn
+  register: nnn_check
+  ignore_errors: yes
+
+- name: Check NNN Cloned
+  stat:
+    path: "{{ user_build_folder }}/nnn"
+  register: nnn_clone_folder
+
+- name: Clone NNN
+  git:
+    repo: "https://github.com/jarun/nnn.git"
+    dest: "{{ user_build_folder }}/nnn"
+  when: nnn_cloned_folder.stat.exists != true
+
+- name: Build NNN
+  shell: "make O_NERD=1"
+  args:
+    chdir: "{{ user_build_folder }}/nnn"
+  when: nnn_check.rc != 0
+
+- name: Install NNN
+  shell: "make install"
+  args:
+    chdir: "{{ user_build_folder }}/nnn"
+    creates: "{{ user_local_dir }}/bin/nnn"
+    

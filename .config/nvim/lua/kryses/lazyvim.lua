@@ -20,7 +20,7 @@ require("lazy").setup({
 		vim.cmd('colorscheme rose-pine')
 	end
 },
-{ 
+{
 	'nvim-treesitter/nvim-treesitter',
 	version = false,
 	build = ":TSUpdate",
@@ -28,7 +28,7 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		init = function()
 			require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-			load_textobjects = ture
+			load_textobjects = true
 		end,
 	},
 },
@@ -48,10 +48,18 @@ require("lazy").setup({
 			{'hrsh7th/nvim-cmp'},     -- Required
 			{'hrsh7th/cmp-nvim-lsp'}, -- Required
 			{'L3MON4D3/LuaSnip'},     -- Required
-		}
-	}
-
-
-
+		},
+	},
+    {
+        'neoclide/coc.nvim',
+        build = 'yarn install --frozen-lockfile'
+    },
+    {
+        'yaegassy/coc-ansible',
+        build = 'yarn install --frozen-lockfile'
+    },
+    {
+        'aserowy/tmux.nvim',
+    }
 }
 )
