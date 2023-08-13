@@ -55,8 +55,8 @@
       become: false
       include: install-zsh.yml
       
-        #- name: Install Node
-        #include: install-node.yml
+    - name: Install Node
+      include: install-node.yml
 
     - name: Install Fonts
       become: false

@@ -13,8 +13,7 @@ lsp.ensure_installed({
 	'pyright',
 	'tsserver',
 	'eslint',
-	'sumneko_lua',
-}) 
+})
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
