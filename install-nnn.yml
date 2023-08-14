@@ -9,7 +9,7 @@
 - name: Check NNN Cloned
   stat:
     path: "{{ user_build_folder }}/nnn"
-  register: nnn_clone_folder
+  register: nnn_cloned_folder
 
 - name: Clone NNN
   git:
