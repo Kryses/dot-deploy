@@ -36,4 +36,5 @@
       - libsecret-tools
       - libncurses5-dev
       - libreadline-dev
+      - treeview
     state: present

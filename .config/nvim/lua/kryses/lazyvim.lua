@@ -60,6 +60,10 @@ require("lazy").setup({
     },
     {
         'aserowy/tmux.nvim',
-    }
+    },
+    {
+        'luukvbaal/nnn.nvim'
+    },
+    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
 }
 )
