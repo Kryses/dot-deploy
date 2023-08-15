@@ -21,4 +21,3 @@
     dest: ~/.tmux.conf
     state: link
   when: tmux_conf_stat.stat.exists == false
-- name:

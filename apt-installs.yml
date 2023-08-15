@@ -1,10 +1,10 @@
 # apt_installs.yml
 
 ---
-- name: Update apt cache
-  apt:
-    update_cache: yes
-  when: ansible_os_family == 'Debian'
+#- name: Update apt cache
+#  apt:
+#    update_cache: yes
+#  when: ansible_os_family == 'Debian'
 
 - name: Install required packages
   apt:

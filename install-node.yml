@@ -1,22 +1,11 @@
 ---
-- name: Check nvm installed
-  become: false
-  command: which nvm
-  register: nvm_check
-  ignore_errors: yes
-
-- name: Check node installed
-  become: false
-  command: which npm
-  register: npm_check
-  ignore_errors: yes
-
 - name: Install nvm
-  shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash"
-  args:
-    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-  when: nvm_check != 0
+  git: 
+    repo: "https://github.com/creationix/nvm.git"
+    dest: "~/.nvm"
+  tags: nvm
 
-- name: Install node
-  shell: "nvm install node"
-  when: npm_check.rc != 0
+- name: Install node and set version
+  shell: "source ~/.nvm/nvm.sh && nvm install 8.11.3" 
+  args:
+    executable: /bin/bash

@@ -19,7 +19,11 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 export XDG_CONFIG_HOME="$HOME/.config"
 #aliases
 
+#nnn
+source ~/.config/nnn/nnnrc.sh
+
 alias df=~/.dotfiles/bin/dotfiles
 alias rz="source ~/.zshrc"
 alias vim=~/.local/bin/nvim
 
+alias vim='nvim'
