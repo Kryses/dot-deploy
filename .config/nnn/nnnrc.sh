@@ -6,11 +6,3 @@ export NNN_OPENER="~/.local/bin/nvim"
 export NNN_FIFO=/tmp/nnn.fifo
 alias ls='nnn -ae' 
 alias nnn='nnn -ae'
-nnn_cd()                                                                                                   
-{
-    if ! [ -z "$NNN_PIPE" ]; then
-        printf "%s\0" "0c${PWD}" > "${NNN_PIPE}" !&
-    fi  
-}
-
-trap nnn_cd EXIT
