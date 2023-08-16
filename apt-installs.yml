@@ -37,4 +37,10 @@
       - libncurses5-dev
       - libreadline-dev
       - treeview
+      - ripgrep
+      - tabbed
+      - sxiv
+      - mpv
+      - file
+      - xdotool
     state: present

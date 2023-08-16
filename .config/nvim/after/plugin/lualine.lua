@@ -12,7 +12,7 @@ local config = {
     always_divide_middle = true,
     globalstatus = false,
     refresh = {
-      statusline = 1000,
+      stktusline = 1000,
       tabline = 1000,
       winbar = 1000,
     }
