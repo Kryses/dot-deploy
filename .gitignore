@@ -1,4 +1,6 @@
 *.swp
 .config/nnn/.lastd
+.config/nnn/.selection
 .config/github-copilot/
 .config/nvm/
+
