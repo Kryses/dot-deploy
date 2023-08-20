@@ -19,8 +19,3 @@
     dest: ~/.config
     state: link
 
-- name: Set bashrc Config
-  file:
-    src: ~/.dotfiles/.config/.bashrc
-    dest: ~/.bashrc
-    state: link

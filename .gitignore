@@ -3,4 +3,6 @@
 .config/nnn/.selection
 .config/github-copilot/
 .config/nvm/
-
+.config/nvim/
+.config/wslu/
+.config/configstore/

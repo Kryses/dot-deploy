@@ -43,4 +43,5 @@
       - mpv
       - file
       - xdotool
+      - python3-venv
     state: present
