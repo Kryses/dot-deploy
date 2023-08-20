@@ -1,0 +1,24 @@
+---
+- name: Download NV Chad
+  git:
+    repo: https://github.com/NvChad/NvChad
+    dest: "~/.config/nvim"
+    depth: 1
+- name: Replace Custom Folder With Symlink
+  block:
+    - name: Check if custom folder exists
+      stat:
+        path: "{{ custom_folder_path }}"
+      register: custom_folder
+
+    - name: Delete Custom Folder
+      file:
+        path: "{{ custom_folder_path }}"
+        state: absent
+      when: custom_folder.stat.exists
+
+    - name: Create Symlink from custom config folder.
+      file:
+        src: ~/.dotfiles/custom
+        dest: "{{ custom_folder_path }}"
+        state: link
