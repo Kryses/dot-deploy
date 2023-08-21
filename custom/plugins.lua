@@ -1,12 +1,23 @@
 local plugins = {
-    {
-      "aserowy/tmux.nvim",
-      config = function ()
-        require("tmux").setup()
-        require("core.utils").load_mappings("tmux")
-      end
-    },
-    {
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim"},
+    config = true,
+    event = "VeryLazy",
+    keys = {{
+      "<leader>vs", "<cmd>:VenvSelect<cr>",
+      "<leader>vc", "<cmd>:VevnSelectCached<cr>"
+    }}
+
+  },
+  {
+    "aserowy/tmux.nvim",
+    config = function ()
+      require("tmux").setup()
+      require("core.utils").load_mappings("tmux")
+    end
+  },
+  {
     "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
     config = function()
@@ -19,9 +30,9 @@ local plugins = {
       dap.listeners.before.event_terminated["dapui_config"] = function()
         dapui.close()
       end
-       dap.listeners.before.event_exited["dapui_config"] = function()
-         dapui.close()
-       end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
     end
   },
   {

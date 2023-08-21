@@ -44,4 +44,5 @@
       - file
       - xdotool
       - python3-venv
+      - fd-find
     state: present
