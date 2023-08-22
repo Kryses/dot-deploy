@@ -38,14 +38,14 @@ M.tmux = {
   n = {
     ["<C-l>"] = {"<cmd>lua require('tmux').move_right()<cr>"},
     ["<C-h>"] = {"<cmd>lua require('tmux').move_left()<cr>"},
-    ["<C-j>"] = {"<cmd>lua require('tmux').move_down()<cr>"},
-    ["<C-k>"] = {"<cmd>lua require('tmux').move_up()<cr>"},
+    ["<C-j>"] = {"<cmd>lua require('tmux').move_bottom()<cr>"},
+    ["<C-k>"] = {"<cmd>lua require('tmux').move_top()<cr>"},
   },
   t = {
     ["<C-l>"] = {"<cmd>lua require('tmux').move_right()<cr>"},
     ["<C-h>"] = {"<cmd>lua require('tmux').move_left()<cr>"},
-    ["<C-j>"] = {"<cmd>lua require('tmux').move_down()<cr>"},
-    ["<C-k>"] = {"<cmd>lua require('tmux').move_up()<cr>"},
+    ["<C-j>"] = {"<cmd>lua require('tmux').move_bottom()<cr>"},
+    ["<C-k>"] = {"<cmd>lua require('tmux').move_top()<cr>"},
   },
 }
 

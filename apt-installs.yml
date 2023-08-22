@@ -45,4 +45,5 @@
       - xdotool
       - python3-venv
       - fd-find
+      - git-lfs
     state: present

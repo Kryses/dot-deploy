@@ -1,5 +1,9 @@
 local plugins = {
   {
+    "tpope/vim-fugitive",
+    cmd = {"Git", "Gedit", "Gsplit", "Gdiffsplit", "Gvdiffsplit"}
+  },
+  {
     "linux-cultist/venv-selector.nvim",
     dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim"},
     config = true,
@@ -70,6 +74,7 @@ local plugins = {
         "mypy",
         "ruff",
         "pyright",
+        "lua-language-server"
       },
     },
   },
