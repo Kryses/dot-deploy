@@ -8,25 +8,26 @@
 
 - name: Check NNN Cloned
   stat:
-    path: "{{ user_build_folder.path }}/nnn"
+    path: "/tmp/nnn"
   register: nnn_cloned_folder
 
 - name: Clone NNN to {{ user_build_folder.path }}/nnn
   git:
     repo: "https://github.com/jarun/nnn.git"
-    dest: "{{ user_build_folder.path }}/nnn"
+    dest: "/tmp/nnn"
   when: nnn_cloned_folder.stat.exists == false
 
 - name: Build NNN
-  shell: "make O_NERD=1 PREFIX={{ user_local_folder.path }}"
+  become: true
+  shell: "make O_NERD=1"
   args:
-    chdir: "{{ user_build_folder.path }}/nnn"
+    chdir: "/tmp/nnn"
   when: nnn_check.rc != 0
 
 - name: Install NNN
   become: true
   shell: "make install"
   args:
-    chdir: "{{ user_build_folder.path }}/nnn"
-    creates: "{{ user_local_folder.path }}/bin/nnn"
+    chdir: "/tmp/nnn"
+    creates: "/usr/local/bin/nnn"
     

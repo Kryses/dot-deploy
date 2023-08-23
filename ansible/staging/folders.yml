@@ -1,11 +1,18 @@
 ---
+- name: Set folder facts
+  set_fact:
+    local: "~/.local"
+    bin: "~/.local/bin"
+    repos: "~/.local/repos"
+    share: "~/.local/share"
+
 - name: Create Local Folders
   file:
-    path: "{{ item.path }}"
+    path: "{{ item }}"
     state: directory
   with_items:
-    - {name: "local", path: "~/.local"}
-    - {name: "bin", path: "~/.local/bin"}
-    - {name: "build", path: "~/.local/build"}
-    - {name: "repos", path: "~/.local/repos"}
+    - "{{ local }}"
+    - "{{ bin }}"
+    - "{{ repos }}"
+    - "{{ share }}"
   register: local_folders

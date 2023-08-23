@@ -8,7 +8,7 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="$HOME/.local/bin/nvim"
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
+source ~/.local/repos/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.nvm/nvm.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

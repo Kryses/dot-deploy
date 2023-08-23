@@ -6,18 +6,16 @@
     - name: Download PowerLevel10k
       git:
         repo: https://github.com/romkatv/powerlevel10k.git
-        dest: "{{ item.path }}/powerlevel10k"
+        dest: "{{ repos }}/powerlevel10k"
         depth: 1
-      loop: "{{ local_folders | json_query('[?name==`repos`]').[*] }}"
     
 - name: Setup ZSH completion.
   block:
     - name: Clone zsh-completion
       git:
         repo: https://github.com/marlonrichert/zsh-autocomplete.git
-        dest: "{{ item.path }}/zsh-autocomplete"
+        dest: "{{ repos }}/zsh-autocomplete"
         depth: 1
-      loop: "{{ local_folders | json_query('[?name==`repos`]').[*] }}"
 
 - name: Setup ZSH config.
   block:

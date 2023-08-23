@@ -10,13 +10,13 @@
   git:
     repo: https://github.com/tmux/tmux.git
     version: "3.3a"
-    dest: "{{ temp_dir.path }}/tmux"
+    dest: "{{ repos }}/tmux"
   when: tmux_check.rc != 0
 
 - name: Set Permissions for installer.
   become: true
   file:
-    path: "{{ temp_dir.path }}/tmux/autogen.sh"
+    path: "{{ repos }}/tmux/autogen.sh"
     mode: 0777
   when: tmux_check.rc != 0
 
@@ -24,14 +24,14 @@
   become: true
   shell: "sh ./autogen.sh"
   args:
-    chdir: "{{ temp_dir.path }}/tmux"
+    chdir: "{{ repos }}/tmux"
   when: tmux_check.rc != 0
 
 - name: "Build TMUX"
   become: true
   shell: "./configure && make"
   args:
-    chdir: "{{ temp_dir.path }}/tmux"
+    chdir: "{{ repos }}/tmux"
   when: tmux_check.rc != 0
 
 - name: Install TMUX

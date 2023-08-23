@@ -10,23 +10,25 @@
   tasks:
     - name: System Installs and Staging
       block:
-        - name: Apt installs
-          become: true
-          include: system/installs.yml
-
         - name: Staging
-          include: system/staging.yml
+          include: "staging/{{ item }}"
+          with_items:
+            - "requirements.yml"
+            - "folders.yml"
+            - "git.yml"
 
-    - name: Custom Installs
-      include: "installs/{{ item.file }}"
-      with_items:
-        - {file: "zsh.yml"}
-        - {file: "node.yml"}
-        - {file: "fonts.yml"}
-        - {file: "tmux.yml"}
-        - {file: "nvim.yml"}
-        - {file: "nnn.yml"}
-        - {file: "nvchad.yml"}
+    - name: Custom Builds & Installs
+      block:
+        - name: Custom Installs
+          include: "installs/{{ item.file }}"
+          with_items:
+            - {file: "zsh.yml"}
+            - {file: "node.yml"}
+            - {file: "fonts.yml"}
+            - {file: "tmux.yml"}
+            - {file: "nvim.yml"}
+            - {file: "nnn.yml"}
+            - {file: "nvchad.yml"}
 
   post_tasks:
     - name: Load Configs
