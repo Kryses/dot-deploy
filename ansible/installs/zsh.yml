@@ -1,0 +1,35 @@
+# build-zsh.yml
+
+---
+- name: Install P10k
+  block:
+    - name: Download PowerLevel10k
+      git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "{{ item.path }}/powerlevel10k"
+        depth: 1
+      loop: "{{ local_folders | json_query('[?name==`repos`]').[*] }}"
+    
+- name: Setup ZSH completion.
+  block:
+    - name: Clone zsh-completion
+      git:
+        repo: https://github.com/marlonrichert/zsh-autocomplete.git
+        dest: "{{ item.path }}/zsh-autocomplete"
+        depth: 1
+      loop: "{{ local_folders | json_query('[?name==`repos`]').[*] }}"
+
+- name: Setup ZSH config.
+  block:
+    - name: Check if .zshrc exists
+      stat:
+        path: ~/.zshrc
+      register: zsh_conf_stat
+    - name: Create Symbolic link for zsh conf
+      file:
+        src: ~/.config/zsh/.zshrc
+        dest: ~/.zshrc
+        state: link
+      when: zsh_conf_stat.stat.exists == false
+
+

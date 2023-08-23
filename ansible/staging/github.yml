@@ -1,0 +1,13 @@
+---
+tasks:
+  - name: Register SSH Key with GitHub
+    uri:
+      url: "https://api.github.com/kryses/keys"
+      method: POST
+      headers:
+        Authorization: "token {{ github_token }}"
+      body_format: json
+      body: >
+        '{"title": "{{ anisible_hostname }}-{{ ansible_distribution }}", 
+        "key": "{{ public_key }}" }'
+

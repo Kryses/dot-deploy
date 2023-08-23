@@ -1,0 +1,6 @@
+---
+collection:
+  - name: community.general
+  - name: ansible.builtin
+  - name: community.crypto
+

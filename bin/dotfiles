@@ -21,11 +21,10 @@ if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
 	chmod 600 "$SSH_DIR/authorized_keys"
 fi	
 
-if [[ -f "$DOTFILE_DIR/requirements.yml" ]]; then
+if [[ -f "$DOTFILE_DIR/ansible/requirements.yml" ]]; then
 	cd "$DOTFILES_DIR"
 	ansible-galaxy install -r requirements.yml
 fi
 
 cd "$DOTFILES_DIR"
-
-ansible-playbook --diff "$DOTFILES_DIR/main.yml" --ask-become-pass
+ansible-playbook --diff "$DOTFILES_DIR/ansible/main.yml" --ask-become-pass

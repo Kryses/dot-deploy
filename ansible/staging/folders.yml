@@ -1,0 +1,11 @@
+---
+- name: Create Local Folders
+  file:
+    path: "{{ item.path }}"
+    state: directory
+  with_items:
+    - {name: "local", path: "~/.local"}
+    - {name: "bin", path: "~/.local/bin"}
+    - {name: "build", path: "~/.local/build"}
+    - {name: "repos", path: "~/.local/repos"}
+  register: local_folders

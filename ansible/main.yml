@@ -1,0 +1,36 @@
+# Main Playbook
+---
+- name: Main Playbook
+  hosts: localhost
+  become: false 
+  gather_facts: yes
+  vars:
+    custom_folder_path: "~/.config/nvim/lua/custom"
+    powerlevel10k_path: "~/.powerlevel10k"
+  tasks:
+    - name: System Installs and Staging
+      block:
+        - name: Apt installs
+          become: true
+          include: system/installs.yml
+
+        - name: Staging
+          include: system/staging.yml
+
+    - name: Custom Installs
+      include: "installs/{{ item.file }}"
+      with_items:
+        - {file: "zsh.yml"}
+        - {file: "node.yml"}
+        - {file: "fonts.yml"}
+        - {file: "tmux.yml"}
+        - {file: "nvim.yml"}
+        - {file: "nnn.yml"}
+        - {file: "nvchad.yml"}
+
+  post_tasks:
+    - name: Load Configs
+      include: config/load-configs.yml
+
+    - name: Configure TMUX
+      include: config/tmux.yml

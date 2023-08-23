@@ -1,8 +1,11 @@
 *.swp
+*.mypy_cache/
 .config/nnn/.lastd
 .config/nnn/.selection
+.config/nnn/bookmarks/*
 .config/github-copilot/
 .config/nvm/
 .config/nvim/
 .config/wslu/
 .config/configstore/
+

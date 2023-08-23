@@ -7,6 +7,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="$HOME/.local/bin/nvim"
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
 source ~/.nvm/nvm.sh
 
@@ -20,6 +21,14 @@ source ~/.config/nnn/nnnrc.sh
 alias df=~/.dotfiles/bin/dotfiles
 alias rz="source ~/.zshrc"
 alias vim=~/.local/bin/nvim
+alias op="pass open --timer 10min"
+alias gp="pass -c "
+
+
+
+
+
+fpath=($HOME/.local/repos/zsh-completions/src $fpath)
 if [ "$TMUX" = "" ]; then tmux; fi
 nnn_cd()                                                                                                   
 {
