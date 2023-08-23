@@ -7,5 +7,5 @@
   with_items:
     - {name: "user.name", value: "Chad Provencher"}
     - {name: "user.email", value: "thechad802@gmail.com"}
-    - {name: "credential.helper", value: "/usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret" }
+    - {name: "credential.helper", value: "store --file ~/.password-store/git-credentials.pass" }
 
