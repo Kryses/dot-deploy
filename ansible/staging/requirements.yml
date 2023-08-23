@@ -51,4 +51,5 @@
           - git-lfs
           - pass
           - pass-extension-tomb
+          - wl-clipboard
         state: present
