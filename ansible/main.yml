@@ -4,14 +4,6 @@
   hosts: localhost
   become: false 
   gather_facts: yes
-  vars_prompt:
-    - name: pass_repo
-      prompt: 'Enter Pass Repo URL: '
-    - name: pass_key_location
-      prompt: 'Enter the location of your pass key: '
-    - name: pass_key_password
-      prompt: 'Enter your pass-store password: '
-      private: yes
   vars:
     custom_folder_path: "~/.config/nvim/lua/custom"
   tasks:

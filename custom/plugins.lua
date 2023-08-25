@@ -5,13 +5,22 @@ local plugins = {
   },
   {
     "linux-cultist/venv-selector.nvim",
-    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim"},
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "nvim-telescope/telescope.nvim",
+      "mfussenegger/nvim-dap",
+    },
     config = true,
     event = "VeryLazy",
     keys = {{
       "<leader>vs", "<cmd>:VenvSelect<cr>",
       "<leader>vc", "<cmd>:VevnSelectCached<cr>"
-    }}
+    }},
+    opts = {
+      dap_enabled = true,
+      search_workspace = true,
+      parent = 10
+    }
 
   },
   {
