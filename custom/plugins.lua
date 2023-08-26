@@ -19,7 +19,9 @@ local plugins = {
     opts = {
       dap_enabled = true,
       search_workspace = true,
-      parent = 10
+      parent = 10,
+      notify_user_on_activate = true,
+      name = '.venv'
     }
 
   },

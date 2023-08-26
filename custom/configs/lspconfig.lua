@@ -9,5 +9,14 @@ lspconfig.pyright.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"python"},
-  venvPath = "~/development/.venv"
+  settings = {
+    python = {
+      analysis = {
+        extraPaths = {
+          "~/dev/show-tools/python/all/libs",
+          "/home/kryses/dev/show-tools/python/all/packages"
+        }
+      }
+    }
+  }
 })
