@@ -21,7 +21,9 @@ local plugins = {
       search_workspace = true,
       parent = 10,
       notify_user_on_activate = true,
-      name = '.venv'
+    },
+    settings = {
+      path = "~/dev/.venv/"
     }
 
   },
