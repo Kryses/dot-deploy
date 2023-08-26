@@ -6,6 +6,6 @@
   tags: nvm
 
 - name: Install node and set version
-  shell: "source ~/.nvm/nvm.sh && nvm install 8.11.3" 
+  shell: "source ~/.nvm/nvm.sh && nvm install 18.17.1" 
   args:
     executable: /bin/bash
