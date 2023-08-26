@@ -12,6 +12,8 @@
       become: true
       apt:
         name:
+          - net-tools
+          - ssh
           - build-essential 
           - libarchive-tools 
           - wget
