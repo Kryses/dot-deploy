@@ -1,11 +1,11 @@
 ---
 - name: Install nvm
-  git: 
+  git:
     repo: "https://github.com/creationix/nvm.git"
     dest: "~/.nvm"
   tags: nvm
 
 - name: Install node and set version
-  shell: "source ~/.nvm/nvm.sh && nvm install 18.17.1" 
+  shell: "source ~/.nvm/nvm.sh && nvm install 18.17.1"
   args:
     executable: /bin/bash

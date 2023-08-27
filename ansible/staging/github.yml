@@ -8,6 +8,5 @@ tasks:
         Authorization: "token {{ github_token }}"
       body_format: json
       body: >
-        '{"title": "{{ anisible_hostname }}-{{ ansible_distribution }}", 
+        '{"title": "{{ anisible_hostname }}-{{ ansible_distribution }}",
         "key": "{{ public_key }}" }'
-

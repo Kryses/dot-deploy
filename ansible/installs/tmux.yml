@@ -1,10 +1,9 @@
-
 ---
 - name: Check Tmux installed
   become: false
   command: which tmux
   register: tmux_check
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Clone Tmux
   git:
@@ -17,7 +16,7 @@
   become: true
   file:
     path: "{{ repos }}/tmux/autogen.sh"
-    mode: 0777
+    mode: 775
   when: tmux_check.rc != 0
 
 - name: TMUX autogen
@@ -40,4 +39,3 @@
   args:
     chdir: "{{ temp_dir.path }}/tmux"
   when: tmux_check.rc != 0
-

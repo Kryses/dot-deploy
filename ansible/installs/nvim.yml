@@ -4,7 +4,7 @@
   become: false
   command: which nvim
   register: nvim_check
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Check NeoVim Is Cloned
   stat:
@@ -19,7 +19,7 @@
   when: (nvim_check.rc != 0) and (nvim_repo_stat.stat.exists == false)
 
 - name: Build NeoVim
-  shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX={{ local }}" 
+  shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX={{ local }}"
   become: false
   args:
     chdir: "{{ repos }}/neovim"
@@ -31,4 +31,3 @@
   args:
     chdir: "{{ repos }}/neovim"
   when: nvim_check.rc != 0
-

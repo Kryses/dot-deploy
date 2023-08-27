@@ -4,7 +4,7 @@
   become: false
   command: which nnn
   register: nnn_check
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Check NNN Cloned
   stat:
@@ -30,4 +30,3 @@
   args:
     chdir: "/tmp/nnn"
     creates: "/usr/local/bin/nnn"
-    

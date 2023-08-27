@@ -10,3 +10,8 @@ lspconfig.pyright.setup({
   capabilities = capabilities,
   filetypes = {"python"},
 })
+
+lspconfig.ansiblels.setup({
+  cmd = {"ansible-language-server", "--stdio"},
+  filetypes = {"yaml"},
+})

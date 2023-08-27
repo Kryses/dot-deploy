@@ -87,7 +87,9 @@ local plugins = {
         "mypy",
         "ruff",
         "pyright",
-        "lua-language-server"
+        "lua-language-server",
+        "ansible-language-server",
+        "ansible-lint"
       },
     },
   },

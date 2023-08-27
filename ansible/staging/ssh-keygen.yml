@@ -1,7 +1,7 @@
 ---
 tasks:
   - name: Generate Key Pair
-    community.crypto.ssh_keypair: 
+    community.crypto.ssh_keypair:
       path: "~/.ssh/id_rsa"
       type: rsa
       size: 2048
@@ -9,4 +9,3 @@ tasks:
   - name: Read public Key
     set_fact:
       public_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-

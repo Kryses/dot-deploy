@@ -4,9 +4,9 @@
     - name: Update apt cache
       become: true
       apt:
-        update_cache: yes
+        update_cache: true
       when: ansible_os_family == 'Debian'
-      ignore_errors: yes 
+      ignore_errors: true
   always:
     - name: Install required packages
       become: true
@@ -14,8 +14,8 @@
         name:
           - net-tools
           - ssh
-          - build-essential 
-          - libarchive-tools 
+          - build-essential
+          - libarchive-tools
           - wget
           - snap
           - make
@@ -71,5 +71,4 @@
             name:
               - python3.10
               - python3.10-venv
-      ignore_errors: yes
-
+      ignore_errors: true

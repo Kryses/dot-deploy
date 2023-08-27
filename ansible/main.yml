@@ -2,15 +2,15 @@
 ---
 - name: Main Playbook
   hosts: localhost
-  become: false 
-  gather_facts: yes
+  become: false
+  gather_facts: true
   vars:
     custom_folder_path: "~/.config/nvim/lua/custom"
   tasks:
     - name: System Installs and Staging
       block:
         - name: Staging
-          include: "staging/{{ item }}"
+          ansible.builtin.include_tasks: "staging/{{ item }}"
           with_items:
             - "requirements.yml"
             - "folders.yml"
@@ -19,7 +19,7 @@
     - name: Custom Builds & Installs
       block:
         - name: Custom Installs
-          include: "installs/{{ item.file }}"
+          ansible.builtin.include_tasks: "installs/{{ item.file }}"
           with_items:
             - {file: "zsh.yml"}
             - {file: "node.yml"}
@@ -31,7 +31,7 @@
 
   post_tasks:
     - name: Load Configs
-      include: config/load-configs.yml
+      ansible.builtin.include_tasks: config/load-configs.yml
 
     - name: Configure TMUX
-      include: config/tmux.yml
+      ansible.builtin.include_tasks: config/tmux.yml

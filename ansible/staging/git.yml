@@ -1,5 +1,5 @@
 ---
-- name: Set Git Config Settings 
+- name: Set Git Config Settings
   git_config:
     scope: global
     name: "{{ item.name }}"
@@ -8,4 +8,3 @@
     - {name: "user.name", value: "Chad Provencher"}
     - {name: "user.email", value: "thechad802@gmail.com"}
     - {name: "credential.helper", value: "store --file ~/.password-store/git-credentials.pass" }
-
