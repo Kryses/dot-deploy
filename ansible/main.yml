@@ -28,6 +28,7 @@
             - {file: "nvim.yml"}
             - {file: "nnn.yml"}
             - {file: "nvchad.yml"}
+            - {file: "obsidianmd.yml"}
 
   post_tasks:
     - name: Load Configs

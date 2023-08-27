@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:/snap/bin:$PATH"
 export EDITOR="$HOME/.local/bin/nvim"
 source ~/.local/repos/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.nvm/nvm.sh

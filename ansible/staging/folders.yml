@@ -5,6 +5,7 @@
     bin: "~/.local/bin"
     repos: "~/.local/repos"
     share: "~/.local/share"
+    dev: "~/dev"
 
 - name: Create Local Folders
   file:
@@ -15,4 +16,5 @@
     - "{{ bin }}"
     - "{{ repos }}"
     - "{{ share }}"
+    - "{{ dev }}"
   register: local_folders
