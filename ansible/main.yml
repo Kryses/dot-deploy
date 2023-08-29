@@ -17,6 +17,12 @@
             - "folders.yml"
             - "git.yml"
 
+    - name: Load Configs
+      include: config/load-configs.yml
+
+    - name: Configure TMUX
+      include: config/tmux.yml
+
     - name: Custom Builds & Installs
       block:
         - name: Custom Installs
@@ -29,10 +35,3 @@
             - {file: "nvim.yml"}
             - {file: "nnn.yml"}
             - {file: "nvchad.yml"}
-
-  post_tasks:
-    - name: Load Configs
-      include: config/load-configs.yml
-
-    - name: Configure TMUX
-      include: config/tmux.yml

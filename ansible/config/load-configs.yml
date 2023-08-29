@@ -19,3 +19,27 @@
     dest: ~/.config
     state: link
 
+- name: Setup ZSH config.
+  block:
+    - name: Check if .zshrc exists
+      stat:
+        path: ~/.zshrc
+      register: zsh_conf_stat
+    - name: Create Symbolic link for zsh conf
+      file:
+        src: ~/.dotfiles/.config/zsh/.zshrc
+        dest: ~/.zshrc
+        state: link
+      when: zsh_conf_stat.stat.exists == false
+
+    - name: Check if .shrc exists
+      stat:
+        path: ~/.p10k.zsh
+      register: p10k_conf_stat
+        
+    - name: Create Symbolic link for zsh conf
+      file:
+        src: ~/.dotfiles/.config/zsh/.p10k.zsh
+        dest: ~/.p10k.zsh
+        state: link
+      when: p10k_conf_stat.stat.exists == false

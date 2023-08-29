@@ -17,17 +17,5 @@
         dest: "{{ repos }}/zsh-autocomplete"
         depth: 1
 
-- name: Setup ZSH config.
-  block:
-    - name: Check if .zshrc exists
-      stat:
-        path: ~/.zshrc
-      register: zsh_conf_stat
-    - name: Create Symbolic link for zsh conf
-      file:
-        src: ~/.config/zsh/.zshrc
-        dest: ~/.zshrc
-        state: link
-      when: zsh_conf_stat.stat.exists == false
 
 
