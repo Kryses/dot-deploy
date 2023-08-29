@@ -17,10 +17,10 @@
             - "git.yml"
 
     - name: Load Configs
-      include: config/load-configs.yml
+      ansible.builtin.include_tasks: config/load-configs.yml
 
     - name: Configure TMUX
-      include: config/tmux.yml
+      ansible.builtin.include_tasks: config/tmux.yml
 
     - name: Custom Builds & Installs
       block:
