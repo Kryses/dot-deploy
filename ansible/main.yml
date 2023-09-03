@@ -16,11 +16,6 @@
             - "folders.yml"
             - "git.yml"
 
-    - name: Load Configs
-      ansible.builtin.include_tasks: config/load-configs.yml
-
-    - name: Configure TMUX
-      ansible.builtin.include_tasks: config/tmux.yml
 
     - name: Custom Builds & Installs
       block:
@@ -34,3 +29,9 @@
             - {file: "nvim.yml"}
             - {file: "nnn.yml"}
             - {file: "nvchad.yml"}
+
+    - name: Load Configs
+      ansible.builtin.include_tasks: config/load-configs.yml
+
+    - name: Configure TMUX
+      ansible.builtin.include_tasks: config/tmux.yml
