@@ -24,10 +24,6 @@ alias vim=~/.local/bin/nvim
 alias op="pass open --timer 10min"
 alias gp="pass -c "
 
-
-
-
-
 fpath=($HOME/.local/repos/zsh-completions/src $fpath)
 if [ "$TMUX" = "" ]; then tmux; fi
 nnn_cd()                                                                                                   

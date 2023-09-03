@@ -14,5 +14,3 @@ if command -v clip.exe >/dev/null 2>&1; then
 else
   echo "clip.exe (Windows clipboard utility) not found. Ensure you're running this in WSL."
 fi
-
-
