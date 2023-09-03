@@ -34,3 +34,15 @@
             - {file: "nvim.yml"}
             - {file: "nnn.yml"}
             - {file: "nvchad.yml"}
+    - name: WSL Only tasks
+      block:
+        - name: Check WSL
+          ansible.builtin.set_fact:
+            is_wsl: ansible_distribution == 'WSL'
+
+        - name: Run Windows Link Script
+          ansible.builtin.shell:
+            cmd: "./shell_scripts/link-windows.sh"
+          when: is_wsl
+          args:
+            creates: ~/Desktop

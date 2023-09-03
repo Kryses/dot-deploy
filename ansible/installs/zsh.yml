@@ -16,6 +16,13 @@
         dest: "{{ repos }}/zsh-autocomplete"
         depth: 1
 
+    - name: Clone zsh-sugguestions
+      git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: "{{ repos }}/zsh-autosuggestions"
+        depth: 1
+
+
 - name: Setup ZSH config.
   block:
     - name: Check if .zshrc exists
