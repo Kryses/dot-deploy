@@ -16,6 +16,11 @@
             - "folders.yml"
             - "git.yml"
 
+    - name: Load Configs
+      ansible.builtin.include_tasks: config/load-configs.yml
+
+    - name: Configure TMUX
+      ansible.builtin.include_tasks: config/tmux.yml
 
     - name: Custom Builds & Installs
       block:
@@ -30,8 +35,15 @@
             - {file: "nnn.yml"}
             - {file: "nvchad.yml"}
 
-    - name: Load Configs
-      ansible.builtin.include_tasks: config/load-configs.yml
+    - name: WSL Only tasks
+      block:
+        - name: Check WSL
+          ansible.builtin.set_fact:
+            is_wsl: ansible_distribution == 'WSL'
 
-    - name: Configure TMUX
-      ansible.builtin.include_tasks: config/tmux.yml
+        - name: Run Windows Link Script
+          ansible.builtin.shell:
+            cmd: "./shell_scripts/link-windows.sh"
+          when: is_wsl
+          args:
+            creates: ~/Desktop

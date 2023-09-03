@@ -25,6 +25,11 @@ alias op="pass open --timer 10min"
 alias gp="pass -c "
 
 fpath=($HOME/.local/repos/zsh-completions/src $fpath)
+
+#Auto Suggest
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+source ~/.local/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 if [ "$TMUX" = "" ]; then tmux; fi
 nnn_cd()                                                                                                   
 {
