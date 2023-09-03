@@ -1,11 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 if [ $# -ne 1 ]; then
   echo "Usage: $0 <unix_path>"
   exit 1
 fi
 
-unix_path="$1"
-windows_path=$(wslpath -w "$unix_path")
+windows_path=$(get-windows-path "$1")
 
 if command -v clip.exe >/dev/null 2>&1; then
   echo -n "$windows_path" | clip.exe

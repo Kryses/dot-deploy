@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <unix_path>"
+  exit 1
+fi
+
+unix_path="$1"
+windows_path=$(wslpath -w "$unix_path")
+echo $windows_path
