@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+if [ $# -eq 0 ]; then
+  echo "No arguments provided."
+  exit 1
+fi
+
+new_args=()
+
+for arg in "$@"; do
+  if [ -e "$arg" ]; then
+    windows_path=$(get-windows-path "$arg")
+    new_args+=($windows_path)
+  else
+    new_args+=($arg)
+  fi
+done
+
+cmd.exe /c "${new_args[@]}"

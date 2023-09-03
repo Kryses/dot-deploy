@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="$HOME/.local/bin:/snap/bin:$PATH"
+export PATH="$HOME/.local/bin:/snap/bin:$HOME/.dotfiles/bin:$PATH"
 export EDITOR="$HOME/.local/bin/nvim"
 source ~/.local/repos/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.nvm/nvm.sh
@@ -23,7 +23,6 @@ alias rz="source ~/.zshrc"
 alias vim=~/.local/bin/nvim
 alias op="pass open --timer 10min"
 alias gp="pass -c "
-
 
 fpath=($HOME/.local/repos/zsh-completions/src $fpath)
 
