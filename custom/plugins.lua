@@ -1,7 +1,7 @@
 local plugins = {
   {
     "tpope/vim-fugitive",
-    cmd = {"Git", "Gedit", "Gsplit", "Gdiffsplit", "Gvdiffsplit"}
+    cmd = {"Gsplit", "Gdiffsplit", "Gvdiffsplit"}
   },
   {
     "linux-cultist/venv-selector.nvim",
@@ -100,5 +100,20 @@ local plugins = {
       require "custom.configs.lspconfig"
     end,
   },
+  {
+    "natecraddock/workspaces.nvim",
+    cmd = { "WorkspacesList", "WorkspacesAdd", "WorkspacesOpen", "WorkspacesRemove" },
+    config = function ()
+      require("workspaces").setup {
+        hooks = {
+          open = "Telescope find_files",
+        }
+      }
+    end
+  },
+  {
+    "charludo/projectmgr.nvim",
+    lazy = false
+  }
 }
 return plugins
