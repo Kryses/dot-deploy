@@ -7,6 +7,13 @@ M.dap = {
   }
 }
 
+M.projects = {
+  n = {
+    ['<leader>p'] = { "Projects..." },
+    ['<leader>po'] = {"<cmd>ProjectMgr<cr>", "Project Manager"}
+  }
+}
+
 M.dap_python = {
   plugin = true,
   n = {

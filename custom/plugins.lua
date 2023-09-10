@@ -1,7 +1,7 @@
 local plugins = {
   {
     "tpope/vim-fugitive",
-    cmd = {"Gsplit", "Gdiffsplit", "Gvdiffsplit"}
+    cmd = {"Git", "Gsplit", "Gdiffsplit", "Gvdiffsplit"}
   },
   {
     "linux-cultist/venv-selector.nvim",
@@ -114,6 +114,22 @@ local plugins = {
   {
     "charludo/projectmgr.nvim",
     lazy = false
+  },
+  {
+    'folke/which-key.nvim', --which-key overrides
+    config = function (_, opts)
+      dofile(vim.g.base46_cache .. "whichkey")
+      require("which-key").setup(opts) -- <-- END lua/plugins/init.lua
+      require('custom.configs.whichkey')
+  end
+  },
+  {
+    'nvim-orgmode/orgmode',
+    lazy = false,
+    config = function ()
+      require("custom.configs.orgconfig")
+    end
   }
+
 }
 return plugins
