@@ -4,8 +4,9 @@ local on_attach = config.on_attach
 local capabilities = config.capabilities
 
 local lspconfig = require("lspconfig")
-
+vim.lsp.set_log_level("debug")
 lspconfig.pyright.setup({
+  cmd = {'pyright-langserver', '--stdio'},
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"python"},

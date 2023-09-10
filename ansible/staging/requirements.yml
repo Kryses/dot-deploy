@@ -12,6 +12,7 @@
       become: true
       apt:
         name:
+          - multitail
           - build-essential
           - libarchive-tools
           - wget
