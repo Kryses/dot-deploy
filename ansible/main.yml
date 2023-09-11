@@ -1,4 +1,3 @@
-# Main Playbook
 - hosts: localhost
   name: Main Playbook
   gather_facts: true
