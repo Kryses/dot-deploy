@@ -3,6 +3,7 @@
   name: Main Playbook
   gather_facts: true
   vars_files:
+    - "vars/github-token.yml"
     - "vars/common.yml"
     - ["vars/{{ ansible_os_family }}.yml", "vars/os_defaults.yml"]
   tasks:
@@ -63,11 +64,11 @@
         file: "common/{{ item }}"
       with_items:
         - "folders.yml"
-        # - "ssh-keygen.yml"
+        - "ssh-keygen.yml"
         - "fonts.yml"
         - "get-keyring.yml"
         - "git.yml"
-        # - "github.yml"
+        - "github.yml"
         - "load-configs.yml"
         - "nnn.yml"
         - "node.yml"

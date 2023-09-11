@@ -1,6 +1,6 @@
 ---
 - name: Set Git Config Settings
-  git_config:
+  community.general.git_config:
     scope: global
     name: "{{ item.name }}"
     value: "{{ item.value }}"

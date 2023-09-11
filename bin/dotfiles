@@ -16,4 +16,4 @@ if [[ -f "$DOTFILE_DIR/ansible/roles/requirements.yml" ]]; then
 fi
 
 cd "$DOTFILES_DIR"
-ansible-playbook --diff "$DOTFILES_DIR/ansible/main.yml" --ask-become-pass
+ansible-playbook --ask-vault-pass --diff "$DOTFILES_DIR/ansible/main.yml" --ask-become-pass

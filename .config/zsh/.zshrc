@@ -25,6 +25,7 @@ alias op="pass open --timer 10min"
 alias gp="pass -c "
 alias bedtime='cmd.exe /C "Shutdown /s /t 3600"'
 alias bedtime2='cmd.exe /C "Shutdown /s /t 7200"'
+alias connect_server='ssh kryses@192.168.1.27'
 
 fpath=($HOME/.local/repos/zsh-completions/src $fpath)
 
