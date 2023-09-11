@@ -1,3 +1,4 @@
+Session.vim
 *.swp
 *.mypy_cache/
 .config/nnn/.lastd
