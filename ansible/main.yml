@@ -1,49 +1,76 @@
 # Main Playbook
----
-- name: Main Playbook
-  hosts: localhost
-  become: false
+- hosts: localhost
+  name: Main Playbook
   gather_facts: true
-  vars:
-    custom_folder_path: "~/.config/nvim/lua/custom"
+  vars_files:
+    - "vars/common.yml"
+    - ["vars/{{ ansible_os_family }}.yml", "vars/os_defaults.yml"]
   tasks:
-    - name: System Installs and Staging
-      block:
-        - name: Staging
-          ansible.builtin.include_tasks: "staging/{{ item }}"
-          with_items:
-            - "requirements.yml"
-            - "folders.yml"
-            - "git.yml"
+    - name: OS Family Test
+      ansible.builtin.debug:
+        msg: "{{ ansible_os_family }}"
+    - name: Install packages
+      ansible.builtin.package:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+      become: true
+      with_items:
+        - { name: vim, state: latest }
+        - { name: neovim, state: latest }
+        - { name: wget, state: latest }
+        - { name: make, state: latest }
+        - { name: unzip, state: latest }
+        - { name: fontconfig, state: latest }
+        - { name: pkg-config, state: latest }
+        - { name: libreadline-dev, state: latest }
+        - { name: cmake, state: latest }
+        - { name: libtool, state: latest }
+        - { name: libtool-bin, state: latest }
+        - { name: gettext, state: latest }
+        - { name: ninja-build, state: latest }
+        - { name: curl, state: latest }
+        - { name: htop, state: latest }
+        - { name: ncdu, state: latest }
+        - { name: zsh, state: latest }
+        - { name: cargo, state: latest }
+        - { name: automake, state: latest }
+        - { name: autoconf, state: latest }
+        - { name: libevent-dev, state: latest }
+        - { name: bison, state: latest }
+        - { name: libsecret-tools, state: latest }
+        - { name: libreadline-dev, state: latest }
+        - { name: treeview, state: latest }
+        - { name: ripgrep, state: latest }
+        - { name: tabbed, state: latest }
+        - { name: sxiv, state: latest }
+        - { name: mpv, state: latest }
+        - { name: file, state: latest }
+        - { name: xdotool, state: latest }
+        - { name: python3-venv, state: latest }
+        - { name: fd-find, state: latest }
+        - { name: git-lfs, state: latest }
+        - { name: pass, state: latest }
+        - { name: pass-extension-tomb, state: latest }
+        - { name: wl-clipboard, state: latest }
+        - { name: software-properties-common, state: latest }
 
-    - name: Load Configs
-      ansible.builtin.include_tasks: config/load-configs.yml
+    - name: PPA and Installs
+      ansible.builtin.include_tasks:
+        file: "distros/{{ ansible_os_family }}/installs.yml"
 
-    - name: Configure TMUX
-      ansible.builtin.include_tasks: config/tmux.yml
-
-    - name: Custom Builds & Installs
-      block:
-        - name: Custom Installs
-          ansible.builtin.include_tasks: "installs/{{ item.file }}"
-          with_items:
-            - {file: "zsh.yml"}
-            - {file: "node.yml"}
-            - {file: "fonts.yml"}
-            - {file: "tmux.yml"}
-            - {file: "nvim.yml"}
-            - {file: "nnn.yml"}
-            - {file: "nvchad.yml"}
-
-    - name: WSL Only tasks
-      block:
-        - name: Check WSL
-          ansible.builtin.set_fact:
-            is_wsl: ansible_distribution == 'WSL'
-
-        - name: Run Windows Link Script
-          ansible.builtin.shell:
-            cmd: "./shell_scripts/link-windows.sh"
-          when: is_wsl
-          args:
-            creates: ~/Desktop
+    - name: Run common
+      ansible.builtin.include_tasks:
+        file: "common/{{ item }}"
+      with_items:
+        - "folders.yml"
+        # - "ssh-keygen.yml"
+        - "fonts.yml"
+        - "get-keyring.yml"
+        - "git.yml"
+        # - "github.yml"
+        - "load-configs.yml"
+        - "nnn.yml"
+        - "node.yml"
+        - "nvchad.yml"
+        - "tmux.yml"
+        - "zsh.yml"

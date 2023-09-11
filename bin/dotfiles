@@ -10,19 +10,8 @@ if ! [ -x "$(command -v ansible)" ]; then
 	sudo apt install -y  ansible
 fi
 
-if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
-	mkdir -p "$SSH_DIR"
-	
-	chmod 700 "$SSH_DIR"
-
-	ssh-keygen -b 4096 -t rsa -f "$SSH_DIR/id_rsa" -N "" -C "$USER@$HOSTNAME"
-	cat "$SSH_DIR/id_rsa.pub" >> "$SSH_DIR/authorized_keys"
-
-	chmod 600 "$SSH_DIR/authorized_keys"
-fi	
-
-if [[ -f "$DOTFILE_DIR/ansible/requirements.yml" ]]; then
-	cd "$DOTFILES_DIR"
+if [[ -f "$DOTFILE_DIR/ansible/roles/requirements.yml" ]]; then
+	cd "$DOTFILES_DIR/ansible/roles"
 	ansible-galaxy install -r requirements.yml
 fi
 

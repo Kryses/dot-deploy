@@ -1,0 +1,16 @@
+---
+- name: Install from non-default repos
+  block:
+    - name: Add Deadsnakes Repo
+      become: true
+      apt_repository:
+        repo: "ppa:deadsnakes/ppa"
+        state: present
+
+    - name: Install required packages
+      become: true
+      apt:
+        name:
+          - python3.10
+          - python3.10-venv
+  ignore_errors: true
