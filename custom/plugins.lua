@@ -130,30 +130,5 @@ local plugins = {
       require("custom.configs.orgconfig")
     end
   },
-  {
-    'xiyaowong/transparent.nvim',
-    cmd = {'TransparentEnable', 'TransparentDisable', 'TransparentToggle'},
-    config = function ()
-      require('transparent').setup({
-        groups = { -- table: default groups
-          'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-          'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-          'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-          'SignColumn', 'CursorLineNr', 'EndOfBuffer',
-        },
-        extra_groups = {
-          "BufferLineTabClose",
-          "BufferLineBufferSelected",
-          "BufferLineFill",
-          "BufferLineBackground",
-          "BufferLineSeparator",
-          "BufferlineIndicatorSelected",
-        }, -- table: additional groups that should be cleared
-        exclude_groups = {},
-
-      })
-      require('transparent').clear_prefix('NvimTree')
-    end
-  }
 }
 return plugins
