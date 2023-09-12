@@ -41,7 +41,6 @@
         - { name: git-lfs, state: latest }
         - { name: pass, state: latest }
         - { name: wl-clipboard, state: latest }
-        - { name: software-properties-common, state: latest }
 
     - name: PPA and Installs
       ansible.builtin.include_tasks:
