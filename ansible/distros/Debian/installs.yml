@@ -14,3 +14,17 @@
           - python3.10
           - python3.10-venv
   ignore_errors: true
+- name: Ubuntu Requirements
+  ansible.builtin.apt:
+    name:
+      - libreadline-dev
+      - libtool-bin
+      - ninja-build
+      - libevent-dev
+      - libsecret-tools
+      - treeview
+      - tabbed
+      - python3-venv
+      - fd-find
+      - pass-extension-tomb
+      - software-properties-common
