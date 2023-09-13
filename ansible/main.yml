@@ -17,6 +17,7 @@
       with_items:
         - { name: vim, state: latest }
         - { name: neovim, state: latest }
+        - { name: tmux, state: latest }
         - { name: wget, state: latest }
         - { name: make, state: latest }
         - { name: unzip, state: latest }

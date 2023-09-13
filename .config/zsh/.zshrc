@@ -20,7 +20,6 @@ source ~/.config/nnn/nnnrc.sh
 
 alias df=~/.dotfiles/bin/dotfiles
 alias rz="source ~/.zshrc"
-alias vim=~/.local/bin/nvim
 alias op="pass open --timer 10min"
 alias gp="pass -c "
 alias bedtime='cmd.exe /C "Shutdown /s /t 3600"'

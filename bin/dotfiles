@@ -6,13 +6,14 @@ SSH_DIR="$HOME/.ssh"
 echo $DOTFILES_DIR
 echo $SSH_DIR
 
-disto=$(cat /etc/os-release | grep ID_LIKE | sed s/ID_LIKE=//g)
+distro=$(cat /etc/os-release | grep ^ID | sed s/^ID=//g)
+echo $distro
 
 if ! [ -x "$(command -v ansible)" ]; then
-  if [ '$disto' = 'debian']; then
-	  sudo apt install -y  ansible
-  elif [ '$disto' = 'arch' ]; then
-    pacman -Sy ansible
+  if [ $distro = 'ubuntu' ]; then
+	sudo apt install -y  ansible
+  elif [ $distro = 'arch' ]; then
+    sudo pacman -S ansible-core ansible
   fi
 fi
 
