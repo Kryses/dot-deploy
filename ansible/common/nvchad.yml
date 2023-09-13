@@ -8,17 +8,17 @@
   block:
     - name: Check if custom folder exists
       stat:
-        path: "~/.config/nvim/custom"
+        path: "~/.config/nvim/lua/custom"
       register: custom_folder
 
     - name: Delete Custom Folder
       file:
-        path: "~/.config/nvim/custom"
+        path: "~/.config/nvim/lua/custom"
         state: absent
       when: custom_folder.stat.exists
 
     - name: Create Symlink from custom config folder.
       file:
         src: ~/.dotfiles/custom
-        dest: "~/.config/nvim/custom"
+        dest: "~/.config/nvim/lua/custom"
         state: link
