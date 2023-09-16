@@ -2,3 +2,7 @@
 - name: Start Arch installs
   ansible.builtin.debug:
     msg: "Running Arch installs"
+- name: Packman installs
+  community.general.pacman:
+    name:
+      - "fd"

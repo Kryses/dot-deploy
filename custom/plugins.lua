@@ -124,11 +124,28 @@ local plugins = {
   end
   },
   {
-    'nvim-orgmode/orgmode',
-    lazy = false,
-    config = function ()
-      require("custom.configs.orgconfig")
+  'nvim-neorg/neorg',
+  cmd = { 'Neorg' },
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  build = ":Neorg sync-parsers",
+  config = function ()
+    require('neorg').setup({
+      load = {
+        ['core.defaults'] = {},
+          ['core.concealer'] = {},
+          ['core.dirman'] = {
+            config = {
+              workspaces = {
+                journal = "~/notes/journal",
+                personal = "~/notes/personl"
+              },
+              default_workspace = "personal"
+
+            }
+          }
+        }
+      })
     end
-  },
+  }
 }
 return plugins
