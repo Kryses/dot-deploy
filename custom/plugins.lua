@@ -137,7 +137,8 @@ local plugins = {
             config = {
               workspaces = {
                 journal = "~/notes/journal",
-                personal = "~/notes/personl"
+                personal = "~/notes/personl",
+                work = "~/notes/work"
               },
               default_workspace = "personal"
 
