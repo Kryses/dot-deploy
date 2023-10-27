@@ -1,4 +1,8 @@
 ---
+- name: Create ssh folder
+  ansible.builtin.file:
+    path: "~/.ssh"
+    state: "directory"
 - name: Generate Key Pair
   community.crypto.openssh_keypair:
     path: "~/.ssh/id_rsa"

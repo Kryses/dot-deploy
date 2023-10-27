@@ -17,17 +17,15 @@
       with_items:
         - { name: vim, state: latest }
         - { name: neovim, state: latest }
+        - { name: tmux, state: latest }
         - { name: wget, state: latest }
         - { name: make, state: latest }
         - { name: unzip, state: latest }
         - { name: fontconfig, state: latest }
         - { name: pkg-config, state: latest }
-        - { name: libreadline-dev, state: latest }
         - { name: cmake, state: latest }
         - { name: libtool, state: latest }
-        - { name: libtool-bin, state: latest }
         - { name: gettext, state: latest }
-        - { name: ninja-build, state: latest }
         - { name: curl, state: latest }
         - { name: htop, state: latest }
         - { name: ncdu, state: latest }
@@ -35,24 +33,15 @@
         - { name: cargo, state: latest }
         - { name: automake, state: latest }
         - { name: autoconf, state: latest }
-        - { name: libevent-dev, state: latest }
         - { name: bison, state: latest }
-        - { name: libsecret-tools, state: latest }
-        - { name: libreadline-dev, state: latest }
-        - { name: treeview, state: latest }
         - { name: ripgrep, state: latest }
-        - { name: tabbed, state: latest }
         - { name: sxiv, state: latest }
         - { name: mpv, state: latest }
         - { name: file, state: latest }
         - { name: xdotool, state: latest }
-        - { name: python3-venv, state: latest }
-        - { name: fd-find, state: latest }
         - { name: git-lfs, state: latest }
         - { name: pass, state: latest }
-        - { name: pass-extension-tomb, state: latest }
         - { name: wl-clipboard, state: latest }
-        - { name: software-properties-common, state: latest }
 
     - name: PPA and Installs
       ansible.builtin.include_tasks:

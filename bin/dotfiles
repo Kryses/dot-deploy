@@ -6,8 +6,15 @@ SSH_DIR="$HOME/.ssh"
 echo $DOTFILES_DIR
 echo $SSH_DIR
 
+distro=$(cat /etc/os-release | grep ^ID | sed s/^ID=//g)
+echo $distro
+
 if ! [ -x "$(command -v ansible)" ]; then
+  if [ $distro = 'ubuntu' ]; then
 	sudo apt install -y  ansible
+  elif [ $distro = 'arch' ]; then
+    sudo pacman -S ansible-core ansible
+  fi
 fi
 
 if [[ -f "$DOTFILE_DIR/ansible/roles/requirements.yml" ]]; then

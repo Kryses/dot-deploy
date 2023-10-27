@@ -7,17 +7,28 @@
   register: conf_stat
   become: false
 
-- name: Remove .configs
+- name: Remove configs
   file:
-    path: ~/.config
-    state: absent
-  when: conf_stat.stat.exists == false
-    
-- name: Link Configs 
+    dest: "~/.config/{{ item }}"
+    state: "absent"
+  with_items:
+    - "nvim"
+    - "nnn"
+    - "neofetch"
+    - "tmux"
+    - "zsh"
+
+- name: Link Configs
   file:
-    src: ~/.dotfiles/.config
-    dest: ~/.config
-    state: link
+    src: "~/.dotfiles/.config/{{ item }}"
+    dest: "~/.config/{{ item }}"
+    state: "link"
+  with_items:
+    - "nvim"
+    - "nnn"
+    - "neofetch"
+    - "tmux"
+    - "zsh"
 
 - name: Setup ZSH config.
   block:
@@ -36,7 +47,6 @@
       stat:
         path: ~/.p10k.zsh
       register: p10k_conf_stat
-        
     - name: Create Symbolic link for zsh conf
       file:
         src: ~/.dotfiles/.config/zsh/.p10k.zsh
