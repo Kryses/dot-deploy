@@ -24,7 +24,6 @@
     dest: "~/.config/{{ item }}"
     state: "link"
   with_items:
-    - "nvim"
     - "nnn"
     - "neofetch"
     - "tmux"
