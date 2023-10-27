@@ -26,6 +26,9 @@ alias gp="pass -c "
 alias bedtime='cmd.exe /C "Shutdown /s /t 3600"'
 alias bedtime2='cmd.exe /C "Shutdown /s /t 7200"'
 alias connect_server='ssh kryses@192.168.1.27'
+alias psh='powershell.exe'
+alias cmd='cmd.exe'
+alias exp='explorer.exe'
 
 fpath=($HOME/.local/repos/zsh-completions/src $fpath)
 

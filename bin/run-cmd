@@ -16,4 +16,4 @@ for arg in "$@"; do
   fi
 done
 
-cmd.exe /c "${new_args[@]}"
+cmd.exe /C "${new_args[@]}"

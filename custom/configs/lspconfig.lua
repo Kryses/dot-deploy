@@ -9,7 +9,7 @@ lspconfig.pyright.setup({
   cmd = {'pyright-langserver', '--stdio'},
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {"python"},
+  filetypes = {"python", '*.spec'},
 })
 
 lspconfig.ansiblels.setup({
