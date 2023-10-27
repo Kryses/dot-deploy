@@ -3,6 +3,7 @@
   ansible.builtin.debug:
     msg: "Running Arch installs"
 - name: Packman installs
+  become: true
   community.general.pacman:
     name:
       - "fd"
