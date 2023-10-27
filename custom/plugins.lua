@@ -120,33 +120,29 @@ local plugins = {
     config = function (_, opts)
       dofile(vim.g.base46_cache .. "whichkey")
       require("which-key").setup(opts) -- <-- END lua/plugins/init.lua
-      require('custom.configs.whichkey')
+
   end
   },
   {
-  'nvim-neorg/neorg',
-  cmd = { 'Neorg' },
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  build = ":Neorg sync-parsers",
-  config = function ()
-    require('neorg').setup({
-      load = {
-        ['core.defaults'] = {},
-          ['core.concealer'] = {},
-          ['core.dirman'] = {
-            config = {
-              workspaces = {
-                journal = "~/notes/journal",
-                personal = "~/notes/personl",
-                work = "~/notes/work"
-              },
-              default_workspace = "personal"
+    'nvim-orgmode/orgmode',
+    dependencies = {
+      { 'nvim-treesitter/nvim-treesitter', lazy = true },
+    },
+    event = 'VeryLazy',
+    config = function()
+      -- Load treesitter grammar for org
+      require('orgmode').setup_ts_grammar()
 
-            }
-          }
-        }
+      -- Setup treesitter
+      require('nvim-treesitter.configs').setup({
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { 'org' },
+        },
+        ensure_installed = { 'org' },
       })
-    end
+      require("custom.configs.orgmode")
+    end,
   }
 }
 return plugins
