@@ -1,0 +1,20 @@
+@document.meta title: {TITLE_INPUT}
+description:
+authors: {AUTHOR}
+categories:
+created: {TODAY}
+updated: {TODAY}
+version: 1.0.0
+@end
+
+* {TODAY}
+  {{:{YESTERDAY}:}}[Yesterday] - {{:{TOMORROW}:}}[Tomorrow]
+
+
+** Meetings
+___
+** ( ) TODO
+   - ( ) {CURSOR}
+___
+** Notes
+   - 
