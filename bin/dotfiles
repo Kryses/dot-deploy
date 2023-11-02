@@ -4,7 +4,6 @@ set -e
 DOTFILES_DIR="$HOME/.dotfiles"
 SSH_DIR="$HOME/.ssh"
 echo $DOTFILES_DIR
-echo $SSH_DIR
 
 distro=$(cat /etc/os-release | grep ^ID | sed s/^ID=//g)
 echo $distro
@@ -13,7 +12,21 @@ if ! [ -x "$(command -v ansible)" ]; then
   if [ $distro = 'ubuntu' ]; then
 	sudo apt install -y  ansible
   elif [ $distro = 'arch' ]; then
-    sudo pacman -S ansible-core ansible
+    sudo pacman -S ansible-core ansible git
+  fi
+fi
+
+if [ $distro = 'arch' ]; then
+  LIBDIR="$DOTFILES_DIR/ansible/library"
+  echo $LIBDIR
+  if [ -f $LIBDIR ]; then
+    mkdir "$LIBDIR"
+  fi
+  if [ -f $LIBDIR/ansible-yay ]; then
+    git clone "https://github.com/mnussbaum/ansible-yay.git" $LIBDIR/ansible-yay
+  fi
+  if [ -f $LIBDIR/makepkg ]; then
+    git clone "https://github.com/gunzy83/ansible-makepkg.git" $LIBDIR/ansible-makepkg
   fi
 fi
 

@@ -7,3 +7,14 @@
   community.general.pacman:
     name:
       - "fd"
+      - "base-devel"
+      - "git"
+- name: Clone Yay
+  ansible.builtin.git:
+    repo: "https://aur.archlinux.org/yay.git"
+    dest: ~/.repos/yay
+- name: Package Yay
+  makepkg:
+    name: yay
+    state: present
+    build_dir: "~/.repos/yay"

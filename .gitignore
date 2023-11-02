@@ -10,4 +10,5 @@ Session.vim
 .config/wslu/
 .config/configstore/
 ansible/vars/github-token.yml
-
+ansible/library/*
+--ansible/library/.placeholder

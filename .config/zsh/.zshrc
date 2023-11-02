@@ -1,4 +1,3 @@
-neofetch
 bindkey -v
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -8,7 +7,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export PATH="$HOME/.local/bin:/snap/bin:$HOME/.dotfiles/bin:$PATH"
-export EDITOR="$HOME/.local/bin/nvim"
+export EDITOR="nvim"
 source ~/.local/repos/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.nvm/nvm.sh
 

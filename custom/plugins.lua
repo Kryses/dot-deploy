@@ -119,29 +119,47 @@ local plugins = {
     'folke/which-key.nvim', --which-key overrides
     config = function (_, opts)
       dofile(vim.g.base46_cache .. "whichkey")
+      require('custom.configs.whichkey')
       require("which-key").setup(opts) -- <-- END lua/plugins/init.lua
 
   end
   },
   {
-    'nvim-orgmode/orgmode',
+    "nvim-neorg/neorg",
+    ft = "norg",
+    build = ":Neorg sync-parsers",
+    lazy=false,
     dependencies = {
-      { 'nvim-treesitter/nvim-treesitter', lazy = true },
+      "nvim-lua/plenary.nvim",
+      {
+        "pysan3/neorg-templates",
+        dependencies = {
+          "L3MON4D3/LuaSnip"
+        }
+      }
     },
-    event = 'VeryLazy',
     config = function()
-      -- Load treesitter grammar for org
-      require('orgmode').setup_ts_grammar()
+      require("neorg").setup ({
+        load = {
+          ["core.defaults"] = {
 
-      -- Setup treesitter
-      require('nvim-treesitter.configs').setup({
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { 'org' },
+
+          }, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              default_workspace = 'refile',
+              use_popup = true,
+              workspaces = {
+                work = "~/notes/work",
+                home = "~/notes/home",
+                refile = "~/notes/refile"
+              },
+            },
+          },
+          ["external.templates"] = { '~/.config/nvim/lua/custom/templates/norg'}
         },
-        ensure_installed = { 'org' },
       })
-      require("custom.configs.orgmode")
     end,
   }
 }

@@ -10,6 +10,17 @@ wk.register {
     r = { name = "refactor..."},
     f = { name = "find..."},
     p = { name = "project..."},
-    o = { name = "org..."}
+    n = { name = 'neorg...',
+      {
+        i = {"<cmd>Neorg index<cr>", 'index'},
+        t = {name = 'template...',
+          {
+            a = {':Neorg templates add ', 'add'},
+            i = {':Neorg templates fload ', 'insert'},
+          }
+        }
+
+      }
+    }
   },
 }
