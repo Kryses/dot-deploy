@@ -13,6 +13,7 @@ wk.register {
     p = { name = "project..."},
     n = { name = 'neorg...',
       {
+        r = {'<cmd>Neorg return<cr>', 'close'},
         w = {'<cmd>Telescope neorg switch_workspace<cr>', 'workspace'},
         i = {"<cmd>Neorg index<cr>", 'index'},
         t = {name = 'template...',
